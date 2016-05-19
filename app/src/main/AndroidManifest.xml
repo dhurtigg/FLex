@@ -29,6 +29,8 @@
         </activity>
         <activity android:name=".VagActivity">
         </activity>
+        <activity android:name=".BestallActivity">
+        </activity>
 
     </application>
 

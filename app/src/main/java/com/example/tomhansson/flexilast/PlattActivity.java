@@ -67,7 +67,8 @@ public class PlattActivity extends AppCompatActivity  {
 
                 alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Beställ", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-
+                        Intent i = new Intent(PlattActivity.this, BestallActivity.class);
+                        startActivity(i);
                     }
                 });
                 alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Avbryt", new DialogInterface.OnClickListener() {
