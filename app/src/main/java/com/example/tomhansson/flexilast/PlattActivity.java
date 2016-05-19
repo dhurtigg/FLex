@@ -65,12 +65,12 @@ public class PlattActivity extends AppCompatActivity  {
                 alertDialog.setTitle("Uppskattat pris:");
                 alertDialog.setMessage("Pris");
 
-                alertDialog.setButton(1, "Beställ", new DialogInterface.OnClickListener() {
+                alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Beställ", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
                     }
                 });
-                alertDialog.setButton(2, "Avbryt", new DialogInterface.OnClickListener() {
+                alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Avbryt", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
                     }
