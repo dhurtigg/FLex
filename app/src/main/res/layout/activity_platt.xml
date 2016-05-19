@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <VideoView
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:id="@+id/videoPlatt"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Hur stor yta vill du ha material till?"
+        android:textSize="20dp"
+        android:paddingBottom="10dp"
+        />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="Längd(meter)"
+        android:ems="10"
+        android:id="@+id/lengthT"
+        android:layout_gravity="center" />
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="Bredd(meter)"
+        android:ems="10"
+        android:id="@+id/widthT"
+        android:layout_gravity="center" />
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="Djup(meter)"
+        android:ems="10"
+        android:id="@+id/deepT"
+        android:layout_gravity="center" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Beräkna"
+        android:id="@+id/berB"
+        android:layout_gravity="center_horizontal" />
+
+
+
+</LinearLayout>
