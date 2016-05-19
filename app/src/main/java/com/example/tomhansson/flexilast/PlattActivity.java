@@ -64,8 +64,8 @@ public class PlattActivity extends AppCompatActivity  {
                 alertDialog.setCancelable(false);
                 alertDialog.setTitle("Uppskattat pris:");
                 alertDialog.setMessage("Pris");
-
                 alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Beställ", new DialogInterface.OnClickListener() {
+
                     public void onClick(DialogInterface dialog, int which) {
                         Intent i = new Intent(PlattActivity.this, BestallActivity.class);
                         startActivity(i);
