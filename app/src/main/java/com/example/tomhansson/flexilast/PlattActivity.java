@@ -7,9 +7,11 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.MediaController;
+import android.widget.Spinner;
 import android.widget.VideoView;
 
 /**
@@ -55,6 +57,11 @@ public class PlattActivity extends AppCompatActivity  {
                 });
             }
         });
+
+        Spinner frakt = (Spinner)findViewById(R.id.fraktM);
+        String[] kommun = new String[]{"Eslöv", "Höör", "Lund"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, kommun);
+        frakt.setAdapter(adapter);
 
         Button berB = (Button) findViewById(R.id.berB);
         berB.setOnClickListener(new View.OnClickListener() {

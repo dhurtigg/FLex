@@ -28,6 +28,7 @@
         android:ems="10"
         android:id="@+id/lengthT"
         android:layout_gravity="center" />
+
     <EditText
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -35,15 +36,24 @@
         android:hint="Bredd(meter)"
         android:ems="10"
         android:id="@+id/widthT"
-        android:layout_gravity="center" />
-    <EditText
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Var ska materialet fraktas?"
+        android:textSize="20dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        />
+
+    <Spinner
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:hint="Djup(meter)"
-        android:ems="10"
-        android:id="@+id/deepT"
-        android:layout_gravity="center" />
+        android:id="@+id/fraktM"
+        android:layout_gravity="center_horizontal" />
 
     <Button
         android:layout_width="wrap_content"
