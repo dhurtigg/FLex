@@ -47,11 +47,9 @@ public class PlattActivity extends AppCompatActivity  {
                     @Override
                     public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
                         MediaController mediaController = new MediaController(PlattActivity.this);
-
                         videoView.setMediaController(mediaController);
-
                         mediaController.setAnchorView(videoView);
-
+                        videoView.start();
                     }
                 });
             }
@@ -61,8 +59,6 @@ public class PlattActivity extends AppCompatActivity  {
         String[] kommun = new String[]{"Eslöv", "Höör", "Lund"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, kommun);
         frakt.setAdapter(adapter);
-
-
 
         final EditText lengthTxt = (EditText) findViewById(R.id.lengthT);
         final EditText widthTxt = (EditText) findViewById(R.id.widthT);
