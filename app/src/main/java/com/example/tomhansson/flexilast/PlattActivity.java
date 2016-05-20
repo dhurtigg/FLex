@@ -39,7 +39,6 @@ public class PlattActivity extends AppCompatActivity  {
                 "android.resource://" + getPackageName() + "/" + R.raw.inst);
 
 
-        videoView.start();
 
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
