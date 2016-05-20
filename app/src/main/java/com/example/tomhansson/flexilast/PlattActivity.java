@@ -76,7 +76,7 @@ public class PlattActivity extends AppCompatActivity  {
 
 
         final Spinner frakt = (Spinner)findViewById(R.id.fraktM);
-        String[] kommun = new String[]{"Eslöv", "Höör", "Lund"};
+        String[] kommun = new String[]{"Eslöv", "Höör", "Lund", "Hässleholm"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, kommun);
         frakt.setAdapter(adapter);
 
@@ -106,6 +106,9 @@ public class PlattActivity extends AppCompatActivity  {
                 }
                 if(stad == "Lund"){
                     fraktp = 1000;
+                }
+                if(stad == "Hässleholm"){
+                    fraktp = 1250;
                 }
 
                 double ber = ((length*width*0.05*1.4*67) + fraktp);

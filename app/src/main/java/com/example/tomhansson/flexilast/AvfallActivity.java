@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.MediaController;
+import android.widget.Spinner;
 import android.widget.VideoView;
 
 /**
@@ -64,6 +66,10 @@ public class AvfallActivity extends AppCompatActivity {
             }
         });
 
+        final Spinner frakt = (Spinner)findViewById(R.id.fraktM);
+        String[] kommun = new String[]{"Eslöv", "Höör", "Lund", "Hässleholm"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, kommun);
+        frakt.setAdapter(adapter);
 
     }
 }
