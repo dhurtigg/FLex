@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -32,8 +34,19 @@ public class AvfallActivity extends AppCompatActivity {
         videoView.setVideoPath(
                 "android.resource://" + getPackageName() + "/" + R.raw.inst);
 
+        videoView.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
 
-        videoView.start();
+                if (videoView.isPlaying()) {
+                    videoView.pause();
+                    return false;
+                } else {
+                    videoView.start();
+                    return false;
+                }
+
+            }
+        });
 
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
@@ -42,17 +55,15 @@ public class AvfallActivity extends AppCompatActivity {
                     @Override
                     public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
                         MediaController mediaController = new MediaController(AvfallActivity.this);
-
                         videoView.setMediaController(mediaController);
-
                         mediaController.setAnchorView(videoView);
+                        //videoView.start();
 
                     }
                 });
             }
         });
+
+
     }
-
-
-
 }

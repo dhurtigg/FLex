@@ -108,7 +108,8 @@ public class PlattActivity extends AppCompatActivity  {
                     fraktp = 1000;
                 }
 
-                int price = (length*width) + fraktp;
+                double ber = ((length*width*0.05*1.4*67) + fraktp);
+                int price = (int)ber;
 
 
 
