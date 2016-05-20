@@ -57,7 +57,7 @@ public class PlattActivity extends AppCompatActivity  {
             }
         });
 
-        Spinner frakt = (Spinner)findViewById(R.id.fraktM);
+        final Spinner frakt = (Spinner)findViewById(R.id.fraktM);
         String[] kommun = new String[]{"Eslöv", "Höör", "Lund"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, kommun);
         frakt.setAdapter(adapter);
@@ -73,7 +73,21 @@ public class PlattActivity extends AppCompatActivity  {
                 int length = Integer.parseInt(lengthTxt.getText().toString());
                 int width = Integer.parseInt(widthTxt.getText().toString());
 
-                int price = length*width;
+                String stad = frakt.getSelectedItem().toString();
+                int fraktp = 0;
+
+                if(stad == "Eslöv"){
+                    fraktp = 500;
+                }
+                if(stad == "Höör"){
+                    fraktp = 750;
+                }
+                if(stad == "Lund"){
+                    fraktp = 1000;
+                }
+
+                int price = (length*width) + fraktp;
+
 
 
                 AlertDialog alertDialog = new AlertDialog.Builder(PlattActivity.this).create();
