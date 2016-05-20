@@ -62,14 +62,24 @@ public class PlattActivity extends AppCompatActivity  {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, kommun);
         frakt.setAdapter(adapter);
 
+
+
+        final EditText lengthTxt = (EditText) findViewById(R.id.lengthT);
+        final EditText widthTxt = (EditText) findViewById(R.id.widthT);
         Button berB = (Button) findViewById(R.id.berB);
         berB.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
+                int length = Integer.parseInt(lengthTxt.getText().toString());
+                int width = Integer.parseInt(widthTxt.getText().toString());
+
+                int price = length*width;
+
+
                 AlertDialog alertDialog = new AlertDialog.Builder(PlattActivity.this).create();
                 alertDialog.setCancelable(false);
                 alertDialog.setTitle("Uppskattat pris:");
-                alertDialog.setMessage("Pris");
+                alertDialog.setMessage(price+"");
                 alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Beställ", new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
