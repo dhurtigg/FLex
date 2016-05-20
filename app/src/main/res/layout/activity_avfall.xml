@@ -29,19 +29,12 @@
         android:textSize="20dp"
         />
 
-    <RadioButton
-        android:layout_width="wrap_content"
+    <Spinner
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Container (ca 8 kubikmeter)"
-        android:id="@+id/containerR"
-         />
-
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Stor säck (ca 0.5 kubikmeter)"
-        android:id="@+id/storsackR"
-         />
+        android:id="@+id/volymM"
+        android:layout_gravity="center_horizontal"
+        />
 
     <TextView
         android:layout_width="wrap_content"

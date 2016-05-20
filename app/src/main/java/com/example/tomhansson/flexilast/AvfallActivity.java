@@ -71,5 +71,14 @@ public class AvfallActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, kommun);
         frakt.setAdapter(adapter);
 
+        final Spinner avfall = (Spinner)findViewById(R.id.avfallM);
+        String[] avf = new String[]{"Trädgårdsavfall", "Ris", "Tryckt virke", "Virke", "Blandat"};
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, avf);
+        avfall.setAdapter(adapter1);
+
+        final Spinner volym = (Spinner)findViewById(R.id.volymM);
+        String[] vol = new String[]{"Container (ca 8 kubikmeter)", "Stor säck (ca 0.5 kubikmeter)"};
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, vol);
+        volym.setAdapter(adapter2);
     }
 }
