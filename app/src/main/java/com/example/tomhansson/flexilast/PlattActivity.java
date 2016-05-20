@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -38,7 +40,22 @@ public class PlattActivity extends AppCompatActivity  {
         videoView.setVideoPath(
                 "android.resource://" + getPackageName() + "/" + R.raw.inst);
 
+        videoView.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
 
+                if(videoView.isPlaying())
+                {
+                    videoView.pause();
+                    return false;
+                }
+                else
+                {
+                    videoView.start();
+                    return false;
+                }
+
+            }
+        });
 
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
@@ -49,11 +66,14 @@ public class PlattActivity extends AppCompatActivity  {
                         MediaController mediaController = new MediaController(PlattActivity.this);
                         videoView.setMediaController(mediaController);
                         mediaController.setAnchorView(videoView);
-                        videoView.start();
+                        //videoView.start();
+
                     }
                 });
             }
         });
+
+
 
         final Spinner frakt = (Spinner)findViewById(R.id.fraktM);
         String[] kommun = new String[]{"Eslöv", "Höör", "Lund"};
