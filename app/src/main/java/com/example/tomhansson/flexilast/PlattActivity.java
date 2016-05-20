@@ -65,10 +65,16 @@ public class PlattActivity extends AppCompatActivity  {
         Button berB = (Button) findViewById(R.id.berB);
         berB.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                int length = 0;
+                int width = 0;
 
-                int length = Integer.parseInt(lengthTxt.getText().toString());
-                int width = Integer.parseInt(widthTxt.getText().toString());
+                if (lengthTxt.getText().length() > 0) {
+                    length = Integer.parseInt(lengthTxt.getText().toString());
+                }
 
+                if(widthTxt.getText().length() > 0) {
+                    width = Integer.parseInt(widthTxt.getText().toString());
+                }
                 String stad = frakt.getSelectedItem().toString();
                 int fraktp = 0;
 
