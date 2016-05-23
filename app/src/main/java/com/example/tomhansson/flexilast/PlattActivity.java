@@ -119,7 +119,7 @@ public class PlattActivity extends AppCompatActivity  {
                 AlertDialog alertDialog = new AlertDialog.Builder(PlattActivity.this).create();
                 alertDialog.setCancelable(false);
                 alertDialog.setTitle("Uppskattat pris:");
-                alertDialog.setMessage(price+"");
+                alertDialog.setMessage(price+" SEK");
                 alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Beställ", new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {

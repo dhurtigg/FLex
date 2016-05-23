@@ -26,8 +26,8 @@ import java.util.Map;
 public class BestallActivity extends AppCompatActivity {
 
     RequestQueue requestQueue;
-    String insertUrl = "http://192.168.1.144/flexilast/AndroidPHP/insertOrder.php";
-    String showUrl = "http://192.168.1.144/flexilast/AndroidPHP/showOrders.php";
+    String insertUrl = "http://192.168.2.7/flexilast/AndroidPHP/insertOrder.php";
+    String showUrl = "http://192.168.2.7/flexilast/AndroidPHP/showOrders.php";
 
     String email = "hejhej@hotmail.com";
     String gravelType = "Jord";
