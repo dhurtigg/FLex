@@ -8,37 +8,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import java.util.HashMap;
-import java.util.Map;
-
 
 /**
  * Created by Daniel on 2016-05-19.
  */
 public class BestallActivity extends AppCompatActivity {
 
-    RequestQueue requestQueue;
-    String insertUrl = "http://192.168.2.7/flexilast/AndroidPHP/insertOrder.php";
-    String showUrl = "http://192.168.2.7/flexilast/AndroidPHP/showOrders.php";
-
     String email = "hejhej@hotmail.com";
     String gravelType = "Jord";
     String amount = "50";
     String price = "5000";
 
+    DatabaseHandler dbHandler;
 
-
-   private Button orderButton;
+    private Button orderButton;
     private TextView textview;
 
+    /* Initiates TextView, Button and a DatabaseHandle. Adds a ClickListener to orderButton*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,36 +32,15 @@ public class BestallActivity extends AppCompatActivity {
 
         textview = (TextView) findViewById(R.id.textview);
         orderButton = (Button) findViewById(R.id.button1);
-        requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+        dbHandler = new DatabaseHandler(this);
 
         orderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, insertUrl,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
+                dbHandler.insertIntoOrders(email,gravelType,amount,price);
 
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-
-                            }
-                        }){
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String,String> params = new HashMap<String, String>();
-                        params.put("email",email);
-                        params.put("gravelType",gravelType);
-                        params.put("amount", amount);
-                        params.put("price", price);
-                        return params;
-                    }
-                };
-                requestQueue.add(stringRequest);
             }
         });
     }

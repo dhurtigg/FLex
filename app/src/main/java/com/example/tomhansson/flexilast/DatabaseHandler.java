@@ -79,7 +79,7 @@ public class DatabaseHandler {
 
     public String getPrice() {
 
-        return "";
+        return " ";
     }
 
 
