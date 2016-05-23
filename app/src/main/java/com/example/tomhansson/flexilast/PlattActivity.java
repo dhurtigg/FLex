@@ -21,13 +21,6 @@ import android.widget.VideoView;
  */
 public class PlattActivity extends AppCompatActivity  {
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent i = new Intent(this, GuideActivity.class);
-        startActivity(i);
-        this.finish();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,6 +131,14 @@ public class PlattActivity extends AppCompatActivity  {
             }
 
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(this, GuideActivity.class);
+        startActivity(i);
+        this.finish();
     }
 
 }
