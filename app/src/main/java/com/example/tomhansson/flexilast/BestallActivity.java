@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
@@ -14,21 +15,31 @@ import android.widget.TextView;
  */
 public class BestallActivity extends AppCompatActivity {
 
-    String email = "hejhej@hotmail.com";
-    String gravelType = "Jord";
-    String amount = "50";
-    String price = "5000";
+    private String email = "";
+    private String gravelType = "";
+    private String amount = "";
+    private String price = "";
 
     DatabaseHandler dbHandler;
 
     private Button orderButton;
     private TextView textview;
+    private EditText editTextView;
 
     /* Initiates TextView, Button and a DatabaseHandle. Adds a ClickListener to orderButton*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bestall);
+
+        Intent intent = getIntent();
+
+        gravelType = intent.getStringExtra("ORDER_GRAVEL_TYPE");
+        amount = intent.getStringExtra("ORDER_AMOUNT");
+        price = intent.getStringExtra("ORDER_PRICE");
+
+
+        editTextView = (EditText) findViewById(R.id.editText);
 
         textview = (TextView) findViewById(R.id.textview);
         orderButton = (Button) findViewById(R.id.button1);
@@ -38,7 +49,7 @@ public class BestallActivity extends AppCompatActivity {
         orderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                email = editTextView.getText().toString();
                 dbHandler.insertIntoOrders(email,gravelType,amount,price);
 
             }

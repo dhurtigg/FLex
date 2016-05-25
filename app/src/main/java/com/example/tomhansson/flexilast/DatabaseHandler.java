@@ -28,7 +28,7 @@ public class DatabaseHandler {
     private String insertUrl;
     private String showUrl;
 
-    RequestQueue requestQueue;
+    private RequestQueue requestQueue;
 
     private Context c;
 
@@ -78,7 +78,6 @@ public class DatabaseHandler {
     }
 
     public String getPrice() {
-
         return " ";
     }
 

@@ -21,11 +21,17 @@ import android.widget.VideoView;
  */
 public class PlattActivity extends AppCompatActivity  {
 
+    private String gravelType;
+    private String priceString;
+    private String amount;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_platt);
+
+        gravelType = "Sand";
 
         final VideoView videoView =
                 (VideoView) findViewById(R.id.videoPlatt);
@@ -107,7 +113,9 @@ public class PlattActivity extends AppCompatActivity  {
                 double ber = ((length*width*0.05*1.4*67) + fraktp);
                 int price = (int)ber;
 
-
+                int tempPrice = (int) (length*width*0.05*1.4);
+                priceString = Integer.toString(price);
+                amount = Integer.toString(tempPrice);
 
                 AlertDialog alertDialog = new AlertDialog.Builder(PlattActivity.this).create();
                 alertDialog.setCancelable(false);
@@ -117,6 +125,9 @@ public class PlattActivity extends AppCompatActivity  {
 
                     public void onClick(DialogInterface dialog, int which) {
                         Intent i = new Intent(PlattActivity.this, BestallActivity.class);
+                        i.putExtra("ORDER_GRAVEL_TYPE", gravelType);
+                        i.putExtra("ORDER_AMOUNT", amount);
+                        i.putExtra("ORDER_PRICE", priceString);
                         startActivity(i);
                     }
                 });
