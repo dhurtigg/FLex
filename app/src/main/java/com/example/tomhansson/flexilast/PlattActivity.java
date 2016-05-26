@@ -24,6 +24,8 @@ public class PlattActivity extends AppCompatActivity  {
     private String gravelType;
     private String priceString;
     private String amount;
+    private EditText lengthTxt;
+    private EditText widthTxt;
 
 
     @Override
@@ -79,9 +81,10 @@ public class PlattActivity extends AppCompatActivity  {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, kommun);
         frakt.setAdapter(adapter);
 
-        final EditText lengthTxt = (EditText) findViewById(R.id.lengthT);
-        final EditText widthTxt = (EditText) findViewById(R.id.widthT);
+        lengthTxt = (EditText) findViewById(R.id.lengthT);
+        widthTxt = (EditText) findViewById(R.id.widthT);
         Button berB = (Button) findViewById(R.id.berB);
+
         berB.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 int length = 0;

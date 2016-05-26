@@ -42,17 +42,12 @@ public class GuideActivity extends AppCompatActivity {
             this.finish();
         }
 
-        if (view.getId() == R.id.uppfart_button) {
-            Intent i = new Intent(GuideActivity.this, UppfartActivity.class);
+        if (view.getId() == R.id.falltrad_button) {
+            Intent i = new Intent(GuideActivity.this, FallTradActivity.class);
             startActivity(i);
             this.finish();
         }
 
-        if (view.getId() == R.id.tradack_button) {
-            Intent i = new Intent(GuideActivity.this, TradackActivity.class);
-            startActivity(i);
-            this.finish();
-        }
     }
 
 }

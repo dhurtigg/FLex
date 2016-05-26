@@ -17,13 +17,7 @@ import android.widget.VideoView;
  */
 public class AvfallActivity extends AppCompatActivity {
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent i = new Intent(this, GuideActivity.class);
-        startActivity(i);
-        this.finish();
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,5 +74,14 @@ public class AvfallActivity extends AppCompatActivity {
         String[] vol = new String[]{"Container (ca 8 kubikmeter)", "Stor säck (ca 0.5 kubikmeter)"};
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, vol);
         volym.setAdapter(adapter2);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(this, GuideActivity.class);
+        startActivity(i);
+        this.finish();
     }
 }

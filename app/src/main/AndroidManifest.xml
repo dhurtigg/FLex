@@ -25,14 +25,13 @@
         </activity>
         <activity android:name=".PlattActivity">
         </activity>
-        <activity android:name=".TradackActivity">
-        </activity>
-        <activity android:name=".UppfartActivity">
-        </activity>
         <activity android:name=".VagActivity">
         </activity>
         <activity android:name=".BestallActivity">
         </activity>
+        <activity android:name=".FallTradActivity">
+        </activity>
+
 
     </application>
 
