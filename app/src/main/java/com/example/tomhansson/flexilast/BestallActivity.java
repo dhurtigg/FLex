@@ -16,7 +16,7 @@ import android.widget.TextView;
 public class BestallActivity extends AppCompatActivity {
 
     private String email = "";
-    private String gravelType = "";
+    private String serviceType = "";
     private String amount = "";
     private String price = "";
 
@@ -34,7 +34,7 @@ public class BestallActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        gravelType = intent.getStringExtra("ORDER_GRAVEL_TYPE");
+        serviceType = intent.getStringExtra("ORDER_GRAVEL_TYPE");
         amount = intent.getStringExtra("ORDER_AMOUNT");
         price = intent.getStringExtra("ORDER_PRICE");
 
@@ -50,7 +50,7 @@ public class BestallActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 email = editTextView.getText().toString();
-                dbHandler.insertIntoOrders(email,gravelType,amount,price);
+                dbHandler.insertIntoOrders(email,serviceType,amount,price);
 
             }
         });
