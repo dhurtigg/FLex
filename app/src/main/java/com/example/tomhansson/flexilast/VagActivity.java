@@ -1,5 +1,6 @@
 package com.example.tomhansson.flexilast;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -12,5 +13,12 @@ public class VagActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vag);
+    }
+
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(this, GuideActivity.class);
+        startActivity(i);
+        this.finish();
     }
 }
