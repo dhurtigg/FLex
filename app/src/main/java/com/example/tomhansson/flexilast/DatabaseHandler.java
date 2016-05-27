@@ -32,7 +32,7 @@ public class DatabaseHandler {
     private String price = "";
     private String result = " ";
 
-    private String[] pricesFromServer;
+    private String typeInput = " ";
 
     private String insertUrl;
     private String showUrl;
@@ -90,9 +90,10 @@ public class DatabaseHandler {
     /* Sends a variable type to a php script that makes a query to the services table in the database.
      * And receives the corresponding price for the type */
 
-    public void getPrice()
+    public String getPrice(String type)
     {
 
+        typeInput = type;
         requestQueue = Volley.newRequestQueue(c.getApplicationContext());
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, showUrl,
@@ -124,15 +125,12 @@ public class DatabaseHandler {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("service", "Lund");
+                params.put("service", typeInput);
                 return params;
             }
         };
         requestQueue.add(stringRequest);
-    }
 
-    public String getPriceString()
-    {
         return result;
     }
 
