@@ -46,11 +46,16 @@ public class BestallActivity extends AppCompatActivity {
 
         dbHandler = new DatabaseHandler(this);
 
+
+
         orderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 email = editTextView.getText().toString();
-                dbHandler.insertIntoOrders(email,serviceType,amount,price);
+              //  dbHandler.insertIntoOrders(email,serviceType,amount,price);
+                dbHandler.getPrice();
+                //dbHandler.print()
+                textview.append(dbHandler.getPriceString());
 
             }
         });

@@ -21,11 +21,9 @@ import android.widget.VideoView;
  */
 public class PlattActivity extends AppCompatActivity  {
 
-    private String serviceType;
+    private String gravelType;
     private String priceString;
     private String amount;
-    private EditText lengthTxt;
-    private EditText widthTxt;
 
 
     @Override
@@ -33,7 +31,7 @@ public class PlattActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_platt);
 
-        serviceType = "Sand";
+        gravelType = "Sand";
 
         final VideoView videoView =
                 (VideoView) findViewById(R.id.videoPlatt);
@@ -81,10 +79,9 @@ public class PlattActivity extends AppCompatActivity  {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, kommun);
         frakt.setAdapter(adapter);
 
-        lengthTxt = (EditText) findViewById(R.id.lengthT);
-        widthTxt = (EditText) findViewById(R.id.widthT);
+        final EditText lengthTxt = (EditText) findViewById(R.id.lengthT);
+        final EditText widthTxt = (EditText) findViewById(R.id.widthT);
         Button berB = (Button) findViewById(R.id.berB);
-
         berB.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 int length = 0;
@@ -113,12 +110,13 @@ public class PlattActivity extends AppCompatActivity  {
                     fraktp = 1250;
                 }
 
-                double calcPrice = ((length*width*0.05*1.4*67) + fraktp);
-                int price = (int)calcPrice;
+                double ber = ((length*width*0.05*1.4*67) + fraktp);
+                int price = (int)ber;
 
-                int tempAmount = (int) (length*width*0.05*1.4);
+                int tempPrice = (int) (length*width*0.05*1.4);
+
                 priceString = Integer.toString(price);
-                amount = Integer.toString(tempAmount);
+                amount = Integer.toString(tempPrice);
 
                 AlertDialog alertDialog = new AlertDialog.Builder(PlattActivity.this).create();
                 alertDialog.setCancelable(false);
@@ -128,7 +126,7 @@ public class PlattActivity extends AppCompatActivity  {
 
                     public void onClick(DialogInterface dialog, int which) {
                         Intent i = new Intent(PlattActivity.this, BestallActivity.class);
-                        i.putExtra("ORDER_GRAVEL_TYPE", serviceType);
+                        i.putExtra("ORDER_GRAVEL_TYPE", gravelType);
                         i.putExtra("ORDER_AMOUNT", amount);
                         i.putExtra("ORDER_PRICE", priceString);
                         startActivity(i);
