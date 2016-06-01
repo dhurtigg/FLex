@@ -132,7 +132,7 @@ public class DatabaseHandler {
         };
         requestQueue.add(stringRequest);
     }
-
+    //Hej
     public String getPriceString(String serviceInput)
     {
         int i = 0;
