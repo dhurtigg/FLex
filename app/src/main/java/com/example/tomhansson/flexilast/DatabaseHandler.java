@@ -16,6 +16,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,21 +30,27 @@ public class DatabaseHandler {
     private String email = "";
     private String gravelType = "";
     private String amount = "";
-    private String price = "";
-    private String result = " ";
+    private String priceInsert = "";
 
-    private String[] pricesFromServer;
+
+
+    private ArrayList<String> price;
+    private ArrayList<String> service;
+
 
     private String insertUrl;
     private String showUrl;
 
     private RequestQueue requestQueue;
-    private JSONArray users = null;
+    private JSONArray jsonArrayServices = null;
     public static final String JSON_ARRAY = "services";
     private Context c;
 
     DatabaseHandler(Context context) {
         c = context;
+
+        price = new ArrayList<String>();
+        service = new ArrayList<String>();
 
         insertUrl = "http://192.168.1.144/flexilast/AndroidPHP/insertOrder.php";
         showUrl = "http://192.168.1.144/flexilast/AndroidPHP/showOrders.php";
@@ -57,7 +64,7 @@ public class DatabaseHandler {
         email = emailInput;
         gravelType = gravelTypeInput;
         amount = amountInput;
-        price = priceInput;
+        priceInsert = priceInput;
 
         requestQueue = Volley.newRequestQueue(c.getApplicationContext());
 
@@ -80,7 +87,7 @@ public class DatabaseHandler {
                 params.put("email", email);
                 params.put("gravelType", gravelType);
                 params.put("amount", amount);
-                params.put("price", price);
+                params.put("price", priceInsert);
                 return params;
             }
         };
@@ -101,18 +108,19 @@ public class DatabaseHandler {
                     public void onResponse(String response) {
                         JSONObject jsonObject = null;
                         try {
+                            //Log.e("RESPONSE: ",response.toString());
                             jsonObject = new JSONObject(response);
-                            users = jsonObject.getJSONArray(JSON_ARRAY);
+                            jsonArrayServices = jsonObject.getJSONArray(JSON_ARRAY);
 
-                            for(int i=0;i<users.length();i++){
-                                JSONObject jo = users.getJSONObject(i);
-                                result = jo.getString("price");
+                            for(int i=0;i<jsonArrayServices.length();i++){
+                                JSONObject jo = jsonArrayServices.getJSONObject(i);
+                                price.add(i,jo.getString("price"));
+                                service.add(i, jo.getString("service"));
                             }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        Log.e("RESPONSE: ",response.toString());
                     }
                 },
                 new Response.ErrorListener() {
@@ -121,19 +129,20 @@ public class DatabaseHandler {
 
                     }
                 }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("service", "Lund");
-                return params;
-            }
         };
         requestQueue.add(stringRequest);
     }
 
-    public String getPriceString()
+    public String getPriceString(String serviceInput)
     {
-        return result;
-    }
+        int i = 0;
 
+        if(service != null && price != null)
+            while (serviceInput.compareTo(service.get(i)) != 0 && i < service.size())
+            {
+                i++;
+            }
+
+        return price.get(i);
+    }
 }

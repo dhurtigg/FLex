@@ -1,6 +1,7 @@
 package com.example.tomhansson.flexilast;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -20,16 +21,21 @@ import android.widget.VideoView;
  * Created by Daniel on 2016-05-17.
  */
 public class PlattActivity extends AppCompatActivity  {
-
+    private int sprice;
     private String gravelType;
     private String priceString;
     private String amount;
-
+    private DatabaseHandler dbhandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_platt);
+
+        dbhandler = new DatabaseHandler(this);
+
+        dbhandler.getPrice();
+
 
         gravelType = "Sand";
 
@@ -79,6 +85,8 @@ public class PlattActivity extends AppCompatActivity  {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, kommun);
         frakt.setAdapter(adapter);
 
+
+
         final EditText lengthTxt = (EditText) findViewById(R.id.lengthT);
         final EditText widthTxt = (EditText) findViewById(R.id.widthT);
         Button berB = (Button) findViewById(R.id.berB);
@@ -95,33 +103,24 @@ public class PlattActivity extends AppCompatActivity  {
                     width = Integer.parseInt(widthTxt.getText().toString());
                 }
                 String stad = frakt.getSelectedItem().toString();
-                int fraktp = 0;
 
-                if(stad == "Eslöv"){
-                    fraktp = 500;
-                }
-                if(stad == "Höör"){
-                    fraktp = 750;
-                }
-                if(stad == "Lund"){
-                    fraktp = 1000;
-                }
-                if(stad == "Hässleholm"){
-                    fraktp = 1250;
-                }
 
-                double ber = ((length*width*0.05*1.4*67) + fraktp);
-                int price = (int)ber;
 
+               sprice = Integer.parseInt(dbhandler.getPriceString(stad));
+
+               // double ber = ((length*width*0.05*1.4*67) + fraktp);
+                //int price = (int)ber;
+
+                double ber = sprice;
                 int tempPrice = (int) (length*width*0.05*1.4);
 
-                priceString = Integer.toString(price);
+                priceString = Integer.toString(sprice);
                 amount = Integer.toString(tempPrice);
 
                 AlertDialog alertDialog = new AlertDialog.Builder(PlattActivity.this).create();
                 alertDialog.setCancelable(false);
                 alertDialog.setTitle("Uppskattat pris:");
-                alertDialog.setMessage(price+" SEK");
+                alertDialog.setMessage(sprice+" SEK");
                 alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Beställ", new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
