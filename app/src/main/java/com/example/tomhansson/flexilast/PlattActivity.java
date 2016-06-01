@@ -21,8 +21,8 @@ import android.widget.VideoView;
  * Created by Daniel on 2016-05-17.
  */
 public class PlattActivity extends AppCompatActivity  {
-    private int sprice;
-    private String gravelType;
+    private int priceService, priceTransport;
+    private String serviceType;
     private String priceString;
     private String amount;
     private DatabaseHandler dbhandler;
@@ -37,7 +37,7 @@ public class PlattActivity extends AppCompatActivity  {
         dbhandler.getPrice();
 
 
-        gravelType = "Sand";
+        serviceType = "Stenmjöl 0-8";
 
         final VideoView videoView =
                 (VideoView) findViewById(R.id.videoPlatt);
@@ -106,26 +106,27 @@ public class PlattActivity extends AppCompatActivity  {
 
 
 
-               sprice = Integer.parseInt(dbhandler.getPriceString(stad));
+               priceService = Integer.parseInt(dbhandler.getPriceString("Stenmjöl 0-8"));
+               priceTransport = Integer.parseInt(dbhandler.getPriceString(stad));
 
-               // double ber = ((length*width*0.05*1.4*67) + fraktp);
-                //int price = (int)ber;
 
-                double ber = sprice;
-                int tempPrice = (int) (length*width*0.05*1.4);
+                double berTransport = priceTransport;
+                double berService = priceService;
+                int tempAmount = (int) (length*width*0.05*1.4);
+                int tempPrice = (int) ((tempAmount*berService) + berTransport);
 
-                priceString = Integer.toString(sprice);
-                amount = Integer.toString(tempPrice);
+                priceString = Integer.toString(tempPrice);
+                amount = Integer.toString(tempAmount);
 
                 AlertDialog alertDialog = new AlertDialog.Builder(PlattActivity.this).create();
                 alertDialog.setCancelable(false);
                 alertDialog.setTitle("Uppskattat pris:");
-                alertDialog.setMessage(sprice+" SEK");
+                alertDialog.setMessage(tempPrice+" SEK");
                 alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Beställ", new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
                         Intent i = new Intent(PlattActivity.this, BestallActivity.class);
-                        i.putExtra("ORDER_GRAVEL_TYPE", gravelType);
+                        i.putExtra("ORDER_GRAVEL_TYPE", serviceType);
                         i.putExtra("ORDER_AMOUNT", amount);
                         i.putExtra("ORDER_PRICE", priceString);
                         startActivity(i);
