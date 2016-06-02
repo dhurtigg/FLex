@@ -3,12 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <VideoView
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:id="@+id/videoAvfall"
-        android:layout_gravity="center_horizontal" />
-
     <ScrollView
         android:id="@+id/SCROLLER_ID"
         android:layout_width="fill_parent"
@@ -20,6 +14,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+    <VideoView
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:id="@+id/videoAvfall"
+        android:layout_gravity="center_horizontal" />
+
+
 
     <TextView
         android:layout_width="wrap_content"
