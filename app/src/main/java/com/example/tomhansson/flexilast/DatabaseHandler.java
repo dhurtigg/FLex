@@ -32,11 +32,8 @@ public class DatabaseHandler {
     private String amount = "";
     private String priceInsert = "";
 
-
-
     private ArrayList<String> price;
     private ArrayList<String> service;
-
 
     private String insertUrl;
     private String showUrl;
@@ -52,8 +49,8 @@ public class DatabaseHandler {
         price = new ArrayList<String>();
         service = new ArrayList<String>();
 
-        insertUrl = "http://192.168.2.7/flexilast/AndroidPHP/insertOrder.php";
-        showUrl = "http://192.168.2.7/flexilast/AndroidPHP/showOrders.php";
+        insertUrl = "http://192.168.1.144/flexilast/AndroidPHP/insertOrder.php";
+        showUrl = "http://192.168.1.144/flexilast/AndroidPHP/showOrders.php";
     }
 
     /* Makes a request to a php script for inserting email, gravelType, amount, price into the
@@ -132,7 +129,7 @@ public class DatabaseHandler {
         };
         requestQueue.add(stringRequest);
     }
-    //Hej
+
     public String getPriceString(String serviceInput)
     {
         int i = 0;

@@ -77,16 +77,16 @@ public class VagActivity extends AppCompatActivity {
             });
 
 
-        final Spinner service = (Spinner)findViewById(R.id.serviceM);
-        String[] serv = new String[]{"Hyvling", "Spridning", "Dammbindning"};
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, serv);
-        service.setAdapter(adapter1);
 
         final Spinner frakt = (Spinner)findViewById(R.id.fraktM);
         String[] kommun = new String[]{"Eslöv", "Höör", "Lund", "Hässleholm"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, kommun);
         frakt.setAdapter(adapter);
 
+        final Spinner service = (Spinner)findViewById(R.id.serviceM);
+        String[] serv = new String[]{"Hyvling", "Spridning", "Dammbindning"};
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, serv);
+        service.setAdapter(adapter1);
 
         final EditText lengthTxt = (EditText) findViewById(R.id.lengthT);
 
