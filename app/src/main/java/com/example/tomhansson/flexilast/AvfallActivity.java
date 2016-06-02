@@ -72,7 +72,7 @@ public class AvfallActivity extends AppCompatActivity {
         });
 
         final Spinner frakt = (Spinner)findViewById(R.id.fraktM);
-        String[] kommun = new String[]{"Stor säck Eslöv", " Stor säck Höör", "Stor säck Lund", "Stor säck Hässleholm",
+        String[] kommun = new String[]{"Stor säck Eslöv", "Stor säck Höör", "Stor säck Lund", "Stor säck Hässleholm",
         "Container Eslöv", "Container Höör", "Container Lund", "Container Hässleholm"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, kommun);
         frakt.setAdapter(adapter);
@@ -96,6 +96,10 @@ public class AvfallActivity extends AppCompatActivity {
                 double berAvfall = priceAvfall;
 
                 tempPrice = (int) (berAvfall + berTransport);
+
+                serviceType = avfallVal+" "+fraktVal;
+                amount = "0";
+                priceString = Integer.toString(tempPrice);
 
                 AlertDialog alertDialog = new AlertDialog.Builder(AvfallActivity.this).create();
                 alertDialog.setCancelable(false);

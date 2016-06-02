@@ -32,7 +32,7 @@
     <Spinner
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:id="@+id/volymM"
+        android:id="@+id/fraktM"
         android:layout_gravity="center_horizontal"
         />
 
