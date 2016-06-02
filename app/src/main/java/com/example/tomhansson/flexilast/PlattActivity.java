@@ -126,7 +126,7 @@ public class PlattActivity extends AppCompatActivity  {
 
                     public void onClick(DialogInterface dialog, int which) {
                         Intent i = new Intent(PlattActivity.this, BestallActivity.class);
-                        i.putExtra("ORDER_GRAVEL_TYPE", serviceType);
+                        i.putExtra("ORDER_SERVICE_TYPE", serviceType);
                         i.putExtra("ORDER_AMOUNT", amount);
                         i.putExtra("ORDER_PRICE", priceString);
                         startActivity(i);

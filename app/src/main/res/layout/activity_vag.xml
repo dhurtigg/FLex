@@ -11,10 +11,75 @@
         android:id="@+id/videoVag"
         android:layout_gravity="center_horizontal" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:id="@+id/SCROLLER_ID"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Vägunderhåll"
-        />
+        android:scrollbars="vertical"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Välj tjänst:"
+                android:textSize="20dp"
+                />
+
+            <Spinner
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/serviceM"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Hur långt avstånd behöver behandlas?"
+                android:textSize="20dp"
+                />
+
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Kilometer"
+                android:ems="10"
+                android:id="@+id/lengthT"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Välj destination:"
+                android:textSize="20dp"
+                android:paddingTop="10dp"
+                />
+
+            <Spinner
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/fraktM"
+                android:layout_gravity="center_horizontal"
+                />
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Beräkna"
+                android:id="@+id/berB"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

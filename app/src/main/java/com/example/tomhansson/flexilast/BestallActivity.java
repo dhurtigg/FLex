@@ -34,7 +34,7 @@ public class BestallActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        serviceType = intent.getStringExtra("ORDER_GRAVEL_TYPE");
+        serviceType = intent.getStringExtra("ORDER_SERVICE_TYPE");
         amount = intent.getStringExtra("ORDER_AMOUNT");
         price = intent.getStringExtra("ORDER_PRICE");
 
