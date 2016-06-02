@@ -102,12 +102,12 @@ public class PlattActivity extends AppCompatActivity  {
                 if(widthTxt.getText().length() > 0) {
                     width = Integer.parseInt(widthTxt.getText().toString());
                 }
-                String stad = frakt.getSelectedItem().toString();
+                String fraktVal = frakt.getSelectedItem().toString();
 
 
 
                priceService = Integer.parseInt(dbhandler.getPriceString("Stenmjöl 0-8"));
-               priceTransport = Integer.parseInt(dbhandler.getPriceString(stad));
+               priceTransport = Integer.parseInt(dbhandler.getPriceString(fraktVal));
 
 
                 double berTransport = priceTransport;

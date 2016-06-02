@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Välj volym efter behov:"
+        android:text="Välj volym och plats:"
         android:textSize="20dp"
         />
 
@@ -50,19 +50,7 @@
         android:id="@+id/avfallM"
         android:layout_gravity="center_horizontal" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Var ska vi hämta?"
-        android:textSize="20dp"
-        />
 
-    <Spinner
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/fraktM"
-        android:layout_gravity="center_horizontal" />
 
     <Button
         android:layout_width="wrap_content"
