@@ -59,7 +59,7 @@ public class BestallActivity extends AppCompatActivity {
 
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i = new Intent(this, PlattActivity.class);
+        Intent i = new Intent(this, GuideActivity.class);
         startActivity(i);
         this.finish();
     }
