@@ -28,9 +28,11 @@ import java.util.Map;
  */
 public class DatabaseHandler {
     private String email = "";
-    private String gravelType = "";
+    private String serviceType = "";
     private String amount = "";
+    private String destination = "";
     private String priceInsert = "";
+
 
     private ArrayList<String> price;
     private ArrayList<String> service;
@@ -57,12 +59,12 @@ public class DatabaseHandler {
      * orders table in the database.
      */
 
-    public void insertIntoOrders(String emailInput, String gravelTypeInput, String amountInput, String priceInput) {
+    public void insertIntoOrders(String emailInput, String serviceInput, String destinationInput ,String amountInput, String priceInput) {
         email = emailInput;
-        gravelType = gravelTypeInput;
+        serviceType = serviceInput;
         amount = amountInput;
         priceInsert = priceInput;
-
+        destination = destinationInput;
         requestQueue = Volley.newRequestQueue(c.getApplicationContext());
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, insertUrl,
@@ -82,7 +84,8 @@ public class DatabaseHandler {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("email", email);
-                params.put("gravelType", gravelType);
+                params.put("service", serviceType);
+                params.put("destination", destination);
                 params.put("amount", amount);
                 params.put("price", priceInsert);
                 return params;

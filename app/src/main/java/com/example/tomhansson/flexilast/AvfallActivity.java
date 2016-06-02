@@ -87,7 +87,7 @@ public class AvfallActivity extends AppCompatActivity {
         berB.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
-                String fraktVal = frakt.getSelectedItem().toString();
+                final String fraktVal = frakt.getSelectedItem().toString();
                 priceTransport = Integer.parseInt(dbhandler.getPriceString(fraktVal));
                 String avfallVal = avfall.getSelectedItem().toString();
                 priceAvfall = Integer.parseInt(dbhandler.getPriceString(avfallVal));
@@ -97,7 +97,7 @@ public class AvfallActivity extends AppCompatActivity {
 
                 tempPrice = (int) (berAvfall + berTransport);
 
-                serviceType = avfallVal+" "+fraktVal;
+                serviceType = avfallVal;
                 amount = "0";
                 priceString = Integer.toString(tempPrice);
 
@@ -112,6 +112,7 @@ public class AvfallActivity extends AppCompatActivity {
                         i.putExtra("ORDER_SERVICE_TYPE", serviceType);
                         i.putExtra("ORDER_AMOUNT", amount);
                         i.putExtra("ORDER_PRICE", priceString);
+                        i.putExtra("ORDER_DESTINATION", fraktVal);
                         startActivity(i);
                     }
                 });

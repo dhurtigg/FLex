@@ -25,6 +25,7 @@ public class PlattActivity extends AppCompatActivity  {
     private String serviceType;
     private String priceString;
     private String amount;
+    //private String destination;
     private DatabaseHandler dbhandler;
 
     @Override
@@ -102,7 +103,7 @@ public class PlattActivity extends AppCompatActivity  {
                 if(widthTxt.getText().length() > 0) {
                     width = Integer.parseInt(widthTxt.getText().toString());
                 }
-                String fraktVal = frakt.getSelectedItem().toString();
+                final String fraktVal = frakt.getSelectedItem().toString();
 
 
 
@@ -129,6 +130,7 @@ public class PlattActivity extends AppCompatActivity  {
                         i.putExtra("ORDER_SERVICE_TYPE", serviceType);
                         i.putExtra("ORDER_AMOUNT", amount);
                         i.putExtra("ORDER_PRICE", priceString);
+                        i.putExtra("ORDER_DESTINATION", fraktVal);
                         startActivity(i);
                     }
                 });

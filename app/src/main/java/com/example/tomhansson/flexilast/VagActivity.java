@@ -21,7 +21,7 @@ import android.widget.VideoView;
 public class VagActivity extends AppCompatActivity {
     private DatabaseHandler dbhandler;
     private int priceTransport, priceService;
-    private String amount, priceString, serviceType;
+    private String amount, priceString, serviceType, destination;
 
 
     @Override
@@ -103,9 +103,11 @@ public class VagActivity extends AppCompatActivity {
                 String serviceVal = service.getSelectedItem().toString();
                 String fraktVal = frakt.getSelectedItem().toString();
 
-
+                destination = fraktVal;
+                serviceType = serviceVal;
 
                 priceService = Integer.parseInt(dbhandler.getPriceString(serviceVal));
+
                 priceTransport = Integer.parseInt(dbhandler.getPriceString(fraktVal));
 
 
@@ -128,6 +130,7 @@ public class VagActivity extends AppCompatActivity {
                         i.putExtra("ORDER_SERVICE_TYPE", serviceType);
                         i.putExtra("ORDER_AMOUNT", amount);
                         i.putExtra("ORDER_PRICE", priceString);
+                        i.putExtra("ORDER_DESTINATION", destination);
                         startActivity(i);
                     }
                 });

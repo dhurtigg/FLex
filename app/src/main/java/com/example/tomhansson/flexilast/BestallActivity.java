@@ -19,7 +19,7 @@ public class BestallActivity extends AppCompatActivity {
     private String serviceType = "";
     private String amount = "";
     private String price = "";
-
+    private String destination = "";
     DatabaseHandler dbHandler;
 
     private Button orderButton;
@@ -37,7 +37,7 @@ public class BestallActivity extends AppCompatActivity {
         serviceType = intent.getStringExtra("ORDER_SERVICE_TYPE");
         amount = intent.getStringExtra("ORDER_AMOUNT");
         price = intent.getStringExtra("ORDER_PRICE");
-
+        destination = intent.getStringExtra("ORDER_DESTINATION");
 
         editTextView = (EditText) findViewById(R.id.editText);
 
@@ -52,7 +52,7 @@ public class BestallActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 email = editTextView.getText().toString();
-                dbHandler.insertIntoOrders(email,serviceType,amount,price);
+                dbHandler.insertIntoOrders(email,serviceType, destination ,amount,price);
             }
         });
     }
