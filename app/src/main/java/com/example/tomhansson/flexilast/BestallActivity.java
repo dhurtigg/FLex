@@ -1,5 +1,7 @@
 package com.example.tomhansson.flexilast;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -42,7 +44,7 @@ public class BestallActivity extends AppCompatActivity {
         editTextView = (EditText) findViewById(R.id.editText);
 
         textview = (TextView) findViewById(R.id.textview);
-        orderButton = (Button) findViewById(R.id.button1);
+        orderButton = (Button) findViewById(R.id.bestallB);
 
         dbHandler = new DatabaseHandler(this);
 
@@ -53,6 +55,21 @@ public class BestallActivity extends AppCompatActivity {
             public void onClick(View v) {
                 email = editTextView.getText().toString();
                 dbHandler.insertIntoOrders(email,serviceType, destination ,amount,price);
+
+
+                AlertDialog alertDialog = new AlertDialog.Builder(BestallActivity.this).create();
+                alertDialog.setCancelable(false);
+                alertDialog.setTitle("Tack för din beställning!");
+                alertDialog.setMessage("Tryck på OK för att återvända till förstasidan");
+                alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent i = new Intent(BestallActivity.this, MainActivity.class);
+                        startActivity(i);
+                    }
+                });
+
+                alertDialog.show();
             }
         });
     }

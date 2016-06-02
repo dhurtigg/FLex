@@ -117,7 +117,7 @@ public class PlattActivity extends AppCompatActivity  {
                 int tempPrice = (int) ((tempAmount*berService) + berTransport);
 
                 priceString = Integer.toString(tempPrice);
-                amount = Integer.toString(tempAmount);
+                amount = Integer.toString(tempAmount)+ " ton";
 
                 AlertDialog alertDialog = new AlertDialog.Builder(PlattActivity.this).create();
                 alertDialog.setCancelable(false);

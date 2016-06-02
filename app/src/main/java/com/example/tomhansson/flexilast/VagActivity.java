@@ -117,7 +117,7 @@ public class VagActivity extends AppCompatActivity {
                 int tempPrice = (int) ((length * berService) + berTransport);
 
                 priceString = Integer.toString(tempPrice);
-                amount = Integer.toString(tempAmount);
+                amount = Integer.toString(tempAmount)+ " km";
 
                 AlertDialog alertDialog = new AlertDialog.Builder(VagActivity.this).create();
                 alertDialog.setCancelable(false);
