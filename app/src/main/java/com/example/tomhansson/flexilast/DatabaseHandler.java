@@ -51,8 +51,8 @@ public class DatabaseHandler {
         price = new ArrayList<String>();
         service = new ArrayList<String>();
 
-        insertUrl = "http://192.168.2.7/flexilast/AndroidPHP/insertOrder.php";
-        showUrl = "http://192.168.2.7/flexilast/AndroidPHP/showOrders.php";
+        insertUrl = "http://192.168.1.144/flexilast/AndroidPHP/insertOrder.php";
+        showUrl = "http://192.168.1.144/flexilast/AndroidPHP/showOrders.php";
     }
 
     /* Makes a request to a php script for inserting email, gravelType, amount, price into the
