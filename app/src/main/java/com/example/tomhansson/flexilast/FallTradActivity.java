@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
  */
 public class FallTradActivity extends AppCompatActivity {
 
+    /* When the back button is pressed the application goes to GuideActivity. */
 
     public void onBackPressed() {
         super.onBackPressed();

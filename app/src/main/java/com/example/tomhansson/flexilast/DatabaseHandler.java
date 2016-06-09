@@ -27,15 +27,15 @@ import java.util.Map;
  *
  */
 public class DatabaseHandler {
-    private String email = "";
-    private String serviceType = "";
-    private String amount = "";
-    private String destination = "";
-    private String priceInsert = "";
+    private String mEmail = "";
+    private String mServiceType = "";
+    private String mAmount = "";
+    private String mDestination = "";
+    private String mPriceInsert = "";
 
 
-    private ArrayList<String> price;
-    private ArrayList<String> service;
+    private ArrayList<String> mPriceList;
+    private ArrayList<String> mServiceList;
 
     private String insertUrl;
     private String showUrl;
@@ -48,8 +48,8 @@ public class DatabaseHandler {
     DatabaseHandler(Context context) {
         c = context;
 
-        price = new ArrayList<String>();
-        service = new ArrayList<String>();
+        mPriceList = new ArrayList<String>();
+        mServiceList = new ArrayList<String>();
 
         insertUrl = "http://192.168.1.144/flexilast/AndroidPHP/insertOrder.php";
         showUrl = "http://192.168.1.144/flexilast/AndroidPHP/showOrders.php";
@@ -60,11 +60,11 @@ public class DatabaseHandler {
      */
 
     public void insertIntoOrders(String emailInput, String serviceInput, String destinationInput ,String amountInput, String priceInput) {
-        email = emailInput;
-        serviceType = serviceInput;
-        amount = amountInput;
-        priceInsert = priceInput;
-        destination = destinationInput;
+        mEmail = emailInput;
+        mServiceType = serviceInput;
+        mAmount = amountInput;
+        mPriceInsert = priceInput;
+        mDestination = destinationInput;
         requestQueue = Volley.newRequestQueue(c.getApplicationContext());
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, insertUrl,
@@ -83,11 +83,11 @@ public class DatabaseHandler {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("email", email);
-                params.put("service", serviceType);
-                params.put("destination", destination);
-                params.put("amount", amount);
-                params.put("price", priceInsert);
+                params.put("email", mEmail);
+                params.put("service", mServiceType);
+                params.put("destination", mDestination);
+                params.put("amount", mAmount);
+                params.put("price", mPriceInsert);
                 return params;
             }
         };
@@ -108,14 +108,14 @@ public class DatabaseHandler {
                     public void onResponse(String response) {
                         JSONObject jsonObject = null;
                         try {
-                            //Log.e("RESPONSE: ",response.toString());
+
                             jsonObject = new JSONObject(response);
                             jsonArrayServices = jsonObject.getJSONArray(JSON_ARRAY);
 
                             for(int i=0;i<jsonArrayServices.length();i++){
                                 JSONObject jo = jsonArrayServices.getJSONObject(i);
-                                price.add(i,jo.getString("price"));
-                                service.add(i, jo.getString("service"));
+                                mPriceList.add(i,jo.getString("price"));
+                                mServiceList.add(i, jo.getString("service"));
                             }
 
                         } catch (JSONException e) {
@@ -133,16 +133,18 @@ public class DatabaseHandler {
         requestQueue.add(stringRequest);
     }
 
+    /* Returns the corresponding price from serviceInput.*/
+
     public String getPriceString(String serviceInput)
     {
         int i = 0;
 
-        if(service != null && price != null)
-            while (serviceInput.compareTo(service.get(i)) != 0 && i < service.size())
+        if(mServiceList != null && mPriceList != null)
+            while (serviceInput.compareTo(mServiceList.get(i)) != 0 && i < mServiceList.size())
             {
                 i++;
             }
 
-        return price.get(i);
+        return mPriceList.get(i);
     }
 }

@@ -20,18 +20,20 @@ import android.widget.VideoView;
  */
 public class AvfallActivity extends AppCompatActivity {
     private int mPriceWaste, mTempPrice, mPriceTransport;
-    private String mServiceType, mPriceString, mAmount , mFraktVal;
+    private String mServiceType, mPriceString, mAmount , mShippingChoice;
 
-    private Spinner wasteSpinner;
-    private Spinner fraktSpinner;
-    private VideoView videoView;
-    private DatabaseHandler dbhandler;
+    private Spinner mWasteSpinner;
+    private Spinner mShippingSpinner;
+    private VideoView mVideoView;
+    private DatabaseHandler mDatabaseHandler;
+    private Button mCalculateButton;
 
     /* Sets up the DatabaseHandler, a videoView, spinners, button. When button is clicked
      * the selected options in the spinner is put into variables and the price is calculated.
      * A dialog window pops with the price and a conformation button. When conformation button
-      * is clicked mServiceType, mAmount, mPriceString, mFraktVal is sent to a new BestallActivity.
-      * */
+     * is clicked mServiceType, mAmount, mPriceString, mShippingChoice is sent to a new
+     * BestallActivity.
+     * */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,66 +41,73 @@ public class AvfallActivity extends AppCompatActivity {
         setContentView(R.layout.activity_avfall);
 
 
-        dbhandler = new DatabaseHandler(this);
-        dbhandler.getPrice();
+        mDatabaseHandler = new DatabaseHandler(this);
+        mDatabaseHandler.getPrice();
 
 
         initiateVideoView();
         initiateSpinners();
 
-        Button berB = (Button) findViewById(R.id.berB);
-        berB.setOnClickListener(new View.OnClickListener() {
+        mCalculateButton = (Button) findViewById(R.id.berB);
+        mCalculateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
-                mFraktVal = fraktSpinner.getSelectedItem().toString();
-                mPriceTransport = Integer.parseInt(dbhandler.getPriceString(mFraktVal));
-                String wasteChoice = wasteSpinner.getSelectedItem().toString();
-                mPriceWaste = Integer.parseInt(dbhandler.getPriceString(wasteChoice));
-
-                double berTransport = mPriceTransport;
-                double berWaste = mPriceWaste;
-
-                mTempPrice = (int) (berWaste + berTransport);
-
-                mServiceType = wasteChoice;
-                mAmount = "0";
-                mPriceString = Integer.toString(mTempPrice);
-
+                calculate();
                 initiateAlertDialog();
             }
         });
+    }
+
+    /* Calculates the price */
+
+    private void calculate()
+    {
+        mShippingChoice = mShippingSpinner.getSelectedItem().toString();
+        mPriceTransport = Integer.parseInt(mDatabaseHandler.getPriceString(mShippingChoice));
+        String wasteChoice = mWasteSpinner.getSelectedItem().toString();
+        mPriceWaste = Integer.parseInt(mDatabaseHandler.getPriceString(wasteChoice));
+
+        double berTransport = mPriceTransport;
+        double berWaste = mPriceWaste;
+
+        mTempPrice = (int) (berWaste + berTransport);
+
+        mServiceType = wasteChoice;
+        mAmount = "0";
+        mPriceString = Integer.toString(mTempPrice);
+
     }
 
     /* Initiates a videoView. */
 
     private void initiateVideoView()
     {
-        videoView = (VideoView) findViewById(R.id.videoAvfall);
+        mVideoView = (VideoView) findViewById(R.id.videoAvfall);
 
-        videoView.setVideoPath(
+        mVideoView.setVideoPath(
                 "android.resource://" + getPackageName() + "/" + R.raw.inst);
 
-        videoView.setOnTouchListener(new View.OnTouchListener() {
+        mVideoView.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
-                if (videoView.isPlaying()) {
-                    videoView.pause();
+                if (mVideoView.isPlaying()) {
+                    mVideoView.pause();
                     return false;
                 } else {
-                    videoView.start();
+                    mVideoView.start();
                     return false;
                 }
             }
         });
 
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+        mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
                 mp.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener() {
                     @Override
                     public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
                         MediaController mediaController = new MediaController(AvfallActivity.this);
-                        videoView.setMediaController(mediaController);
-                        mediaController.setAnchorView(videoView);
+                        mVideoView.setMediaController(mediaController);
+                        mediaController.setAnchorView(mVideoView);
                     }
                 });
             }
@@ -109,16 +118,16 @@ public class AvfallActivity extends AppCompatActivity {
 
     private void initiateSpinners()
     {
-        fraktSpinner = (Spinner)findViewById(R.id.fraktM);
+        mShippingSpinner = (Spinner)findViewById(R.id.fraktM);
         String[] kommun = new String[]{"Stor säck Eslöv", "Stor säck Höör", "Stor säck Lund", "Stor säck Hässleholm",
                 "Container Eslöv", "Container Höör", "Container Lund", "Container Hässleholm"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, kommun);
-        fraktSpinner.setAdapter(adapter);
+        mShippingSpinner.setAdapter(adapter);
 
-        wasteSpinner = (Spinner)findViewById(R.id.avfallM);
+        mWasteSpinner = (Spinner)findViewById(R.id.avfallM);
         String[] avf = new String[]{"Trädgårdsavfall", "Ris", "Tryckt virke", "Virke", "Blandat"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, avf);
-        wasteSpinner.setAdapter(adapter1);
+        mWasteSpinner.setAdapter(adapter1);
     }
 
     /* Initiates a alert dialog. */
@@ -137,7 +146,7 @@ public class AvfallActivity extends AppCompatActivity {
                 i.putExtra("ORDER_SERVICE_TYPE", mServiceType);
                 i.putExtra("ORDER_AMOUNT", mAmount);
                 i.putExtra("ORDER_PRICE", mPriceString);
-                i.putExtra("ORDER_DESTINATION", mFraktVal);
+                i.putExtra("ORDER_DESTINATION", mShippingChoice);
                 startActivity(i);
             }
         });
@@ -151,6 +160,7 @@ public class AvfallActivity extends AppCompatActivity {
     }
 
     /* When the back button is pressed the application goes to GuideActivity. */
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();

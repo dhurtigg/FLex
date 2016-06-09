@@ -7,6 +7,15 @@ import android.view.View;
 
 public class GuideActivity extends AppCompatActivity {
 
+
+    /* When the back button is pressed the application goes to GuideActivity. */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_guide);
+    }
+
+
     public void onBackPressed() {
         super.onBackPressed();
         Intent i = new Intent(this, MainActivity.class);
@@ -14,13 +23,7 @@ public class GuideActivity extends AppCompatActivity {
         this.finish();
     }
 
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guide);
-    }
+    /* Handles the button. */
 
     public void buttonHandler(View view) {
 

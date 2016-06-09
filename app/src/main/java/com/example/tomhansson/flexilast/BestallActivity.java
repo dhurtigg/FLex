@@ -17,18 +17,19 @@ import android.widget.TextView;
  */
 public class BestallActivity extends AppCompatActivity {
 
-    private String email = "";
-    private String serviceType = "";
-    private String amount = "";
-    private String price = "";
-    private String destination = "";
-    DatabaseHandler dbHandler;
+    private String mEmail = "";
+    private String mServiceType = "";
+    private String mAmount = "";
+    private String mPrice = "";
+    private String mDestination = "";
+    DatabaseHandler mDbHandler;
 
-    private Button orderButton;
-    private TextView textview;
-    private EditText editTextView;
+    private Button mOrderButton;
+    private TextView mTextview;
+    private EditText mEditTextView;
 
-    /* Initiates TextView, Button and a DatabaseHandle. Adds a ClickListener to orderButton*/
+    /* Initiates TextView, Button and a DatabaseHandler. Adds a ClickListener to orderButton*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,43 +37,50 @@ public class BestallActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        serviceType = intent.getStringExtra("ORDER_SERVICE_TYPE");
-        amount = intent.getStringExtra("ORDER_AMOUNT");
-        price = intent.getStringExtra("ORDER_PRICE");
-        destination = intent.getStringExtra("ORDER_DESTINATION");
+        mServiceType = intent.getStringExtra("ORDER_SERVICE_TYPE");
+        mAmount = intent.getStringExtra("ORDER_AMOUNT");
+        mPrice = intent.getStringExtra("ORDER_PRICE");
+        mDestination = intent.getStringExtra("ORDER_DESTINATION");
 
-        editTextView = (EditText) findViewById(R.id.editText);
+        mEditTextView = (EditText) findViewById(R.id.editText);
 
-        textview = (TextView) findViewById(R.id.textview);
-        orderButton = (Button) findViewById(R.id.bestallB);
+        mTextview = (TextView) findViewById(R.id.textview);
+        mOrderButton = (Button) findViewById(R.id.bestallB);
 
-        dbHandler = new DatabaseHandler(this);
+        mDbHandler = new DatabaseHandler(this);
 
 
-
-        orderButton.setOnClickListener(new View.OnClickListener() {
+        mOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                email = editTextView.getText().toString();
-                dbHandler.insertIntoOrders(email,serviceType, destination ,amount,price);
+                mEmail = mEditTextView.getText().toString();
+                mDbHandler.insertIntoOrders(mEmail,mServiceType, mDestination ,mAmount,mPrice);
+                initiateAlertDialog();
 
-
-                AlertDialog alertDialog = new AlertDialog.Builder(BestallActivity.this).create();
-                alertDialog.setCancelable(false);
-                alertDialog.setTitle("Tack för din beställning!");
-                alertDialog.setMessage("Tryck på OK för att återvända till förstasidan");
-                alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent i = new Intent(BestallActivity.this, MainActivity.class);
-                        startActivity(i);
-                    }
-                });
-
-                alertDialog.show();
             }
         });
     }
+
+     /* Initiates a alert dialog. */
+
+    private void initiateAlertDialog() {
+
+        AlertDialog alertDialog = new AlertDialog.Builder(BestallActivity.this).create();
+        alertDialog.setCancelable(false);
+        alertDialog.setTitle("Tack för din beställning!");
+        alertDialog.setMessage("Tryck på OK för att återvända till förstasidan");
+        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+                Intent i = new Intent(BestallActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
+
+        alertDialog.show();
+    }
+
+    /* When the back button is pressed the application goes to GuideActivity. */
 
     public void onBackPressed() {
         super.onBackPressed();
