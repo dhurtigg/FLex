@@ -18,8 +18,18 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Tack för att du använder vår app! \n\n
+Observera att detta är en beställning, inte ett köp. Det återstår fortfarande en del innan vi kan bekräfta din beställning. \n\n
+Vänligen skriv in din e-mail här nedan och tryck på 'Beställ' så kollar vi igenom din beställning och återkommer så fort som möjligt. \n\n
+Kontrollera noga din mail innan du trycker på 'Beställ'. Är mailen felaktig eller vi inte får något svar inom rimlig tid tas din beställning bort. \n\n
+"
         android:id="@+id/textview"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#DC7373"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp" />
         />
 
     <EditText

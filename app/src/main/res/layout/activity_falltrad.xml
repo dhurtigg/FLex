@@ -3,4 +3,45 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <ScrollView
+        android:id="@+id/SCROLLER_ID"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <VideoView
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:id="@+id/videoFallTrad"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Flexilast kan hjälpa dig med att fälla dina träd! \n\n
+Vid intresse eller behov kontakta oss på: \n\n
+Telefon: [NUMMER] \n
+E-mail: [ADRESS]
+"
+                android:id="@+id/textView"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#DC7373"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp" />
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
 </LinearLayout>
