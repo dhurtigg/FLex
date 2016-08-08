@@ -7,7 +7,18 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Info"
-        />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Välkommen till Flexilast! \n\n
+>Tryck på knappen 'Beställningsguide' i huvudmenyn. \n
+>Välj sedan området du behöver hjälp med. \n
+>Mata in uppgifterna som appen ber om beroende på ditt förra val. \n
+>Tryck på 'Beräkna'-knappen för att få en uppskattat kostnad. Tryck sedan på 'OK' om du vill fortsätta beställningen \n
+>Skriv in din mail och tryck på 'Beställ'-knappen för att skicka iväg din beställning. \n
+>Flexilast går igenom din beställning och kontaktar dig snarast."
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp" />
 
 </LinearLayout>

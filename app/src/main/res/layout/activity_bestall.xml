@@ -26,7 +26,6 @@ Kontrollera noga din mail innan du trycker på 'Beställ'. Är mailen felaktig e
 "
         android:id="@+id/textview"
         android:layout_gravity="center_horizontal"
-        android:textColor="#DC7373"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp" />

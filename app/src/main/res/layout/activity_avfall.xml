@@ -29,7 +29,6 @@
         android:layout_gravity="center_horizontal"
         android:text="Välj volym och destionation:"
         android:textSize="20dp"
-        android:textColor="#DC7373"
         />
 
     <Spinner
@@ -45,7 +44,6 @@
         android:layout_gravity="center_horizontal"
         android:text="Vad ska du slänga?"
         android:textSize="20dp"
-        android:textColor="#DC7373"
         />
 
     <Spinner

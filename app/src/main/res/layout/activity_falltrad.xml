@@ -27,14 +27,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Flexilast kan hjälpa dig med att fälla dina träd! \n\n
-Vid intresse eller behov kontakta oss på: \n\n
+                android:text="Flexilast kan hjälpa dig med att fälla dina träd! \n
+Vid intresse eller behov kontakta oss på: \n
 Telefon: [NUMMER] \n
 E-mail: [ADRESS]
 "
                 android:id="@+id/textView"
                 android:layout_gravity="center_horizontal"
-                android:textColor="#DC7373"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp" />
